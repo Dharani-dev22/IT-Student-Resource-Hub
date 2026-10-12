@@ -2,7 +2,7 @@
 $host = 'gateway01.ap-northeast-1.prod.aws.tidbcloud.com';  
 $dbname = 'resource_hub'; 
 $username = '4T9KC9Lh1qCFcDw.root';  
-$password = 'YOUR_GENERATED_PASSWORD';  
+$password = '4GyYQmpWOnFpd64S';  
 
 try {
     $pdo = new PDO("mysql:host=$host;port=4000;dbname=$dbname;sslmode=VERIFY_IDENTITY", $username, $password, array(
