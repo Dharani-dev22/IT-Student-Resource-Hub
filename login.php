@@ -1,6 +1,5 @@
 <?php
 session_start();
-include 'includes/header.php';
 require 'includes/db.php';
 
 $error = '';
@@ -22,6 +21,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $error = "Invalid email or password.";
     }
 }
+
+// ⚠️ Include the visual header AFTER all PHP logic and redirects are finished!
+include 'includes/header.php'; 
 ?>
 
 <div class="container">
