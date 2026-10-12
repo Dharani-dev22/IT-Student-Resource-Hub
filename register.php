@@ -1,5 +1,5 @@
 <?php
-include 'includes/header.php';
+session_start();
 require 'includes/db.php';
 
 $error = '';
@@ -10,21 +10,23 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = trim($_POST['email']);
     $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
 
-    $stmt = $pdo->prepare("SELECT id FROM users WHERE email = ?");
-    $stmt->execute([$email]);
-
-    if ($stmt->rowCount() > 0) {
-        $error = "Email already registered.";
-    } else {
-        $insert = $pdo->prepare("INSERT INTO users (name, email, password) VALUES (?, ?, ?)");
-        if ($insert->execute([$name, $email, $password])) {
-            $success = "Registration successful. You can now login.";
+    try {
+        $stmt = $pdo->prepare("INSERT INTO users (name, email, password) VALUES (?, ?, ?)");
+        if ($stmt->execute([$name, $email, $password])) {
+            $success = "Registration successful! You can now login.";
         } else {
-            $error = "Registration failed.";
+            $error = "Registration failed. Please try again.";
+        }
+    } catch(PDOException $e) {
+        if ($e->getCode() == 23000) {
+            $error = "Email already exists!";
+        } else {
+            $error = "An error occurred. Please try again.";
         }
     }
 }
-?>
+
+ ?>
 
 <div class="container">
     <h2>Register</h2>
@@ -32,7 +34,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <?php if($success): ?><p style="color:green; margin-bottom:10px;"><?php echo $success; ?></p><?php endif; ?>
     <form method="POST" action="">
         <div style="margin-bottom: 15px;">
-            <label>Name</label><br>
+            <label>Full Name</label><br>
             <input type="text" name="name" required style="width:100%; padding:10px; margin-top:5px;">
         </div>
         <div style="margin-bottom: 15px;">
