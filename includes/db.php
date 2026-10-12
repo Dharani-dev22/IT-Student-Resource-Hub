@@ -5,11 +5,9 @@ $username = '4T9KC9Lh1qCFcDw.root';
 $password = '4GyYQmpWOnFpd64S'; 
 
 try {
-   
-    $ca_path = file_exists('/etc/ssl/certs/ca-certificates.crt') ? '/etc/ssl/certs/ca-certificates.crt' : '/etc/pki/tls/certs/ca-bundle.crt';
-    
     $pdo = new PDO("mysql:host=$host;port=4000;dbname=$dbname", $username, $password, array(
-        PDO::MYSQL_ATTR_SSL_CA => $ca_path
+        PDO::MYSQL_ATTR_SSL_CA => __DIR__ . '/cacert.pem',
+        PDO::MYSQL_ATTR_SSL_VERIFY_SERVER_CERT => false
     ));
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 } catch(PDOException $e) {
