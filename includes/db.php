@@ -5,7 +5,7 @@ $username = '4T9KC9Lh1qCFcDw.root';
 $password = '4GyYQmpWOnFpd64S'; 
 
 try {
-    // Automatically use Vercel's built-in Linux SSL certificates
+   
     $ca_path = file_exists('/etc/ssl/certs/ca-certificates.crt') ? '/etc/ssl/certs/ca-certificates.crt' : '/etc/pki/tls/certs/ca-bundle.crt';
     
     $pdo = new PDO("mysql:host=$host;port=4000;dbname=$dbname", $username, $password, array(
