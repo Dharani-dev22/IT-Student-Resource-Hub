@@ -26,7 +26,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 }
 
- ?>
+include 'includes/header.php';
+?>
 
 <div class="container">
     <h2>Register</h2>
@@ -35,15 +36,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <form method="POST" action="">
         <div style="margin-bottom: 15px;">
             <label>Full Name</label><br>
-            <input type="text" name="name" required style="width:100%; padding:10px; margin-top:5px;">
+            <input type="text" name="name" required style="width:100%; max-width:400px; padding:10px; margin-top:5px;">
         </div>
         <div style="margin-bottom: 15px;">
             <label>Email</label><br>
-            <input type="email" name="email" required style="width:100%; padding:10px; margin-top:5px;">
+            <input type="email" name="email" required style="width:100%; max-width:400px; padding:10px; margin-top:5px;">
         </div>
         <div style="margin-bottom: 15px;">
             <label>Password</label><br>
-            <input type="password" name="password" required style="width:100%; padding:10px; margin-top:5px;">
+            <input type="password" name="password" required style="width:100%; max-width:400px; padding:10px; margin-top:5px;">
         </div>
         <button type="submit" class="btn-primary">Register</button>
     </form>
