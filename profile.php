@@ -53,6 +53,9 @@ $user = $stmt->fetch();
         </div>
         
         <button type="submit" class="btn-primary">Save Changes</button>
+        <div style="margin-top: 20px;">
+    <a href="logout.php" class="btn-primary" style="background-color: #dc3545; text-decoration: none; padding: 10px 15px; color: white; border-radius: 4px;">Logout</a>
+</div>
     </form>
 </div>
 
