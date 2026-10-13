@@ -52,12 +52,13 @@
         </div>
         <nav class="nav-links" style="display: flex; align-items: center;">
             <a href="index.php">Home</a>
+            <a href="about.php" style="margin-left: 15px;">About</a>
             <?php if(isset($_SESSION['user_id'])): ?>
-                <a href="dashboard.php">Materials</a>
-                <a href="profile.php">My Profile</a>
+                <a href="dashboard.php" style="margin-left: 15px;">Materials</a>
+                <a href="profile.php" style="margin-left: 15px;">My Profile</a>
             <?php else: ?>
-                <a href="login.php">Login</a>
-                <a href="register.php" class="btn-primary">Register</a>
+                <a href="login.php" style="margin-left: 15px;">Login</a>
+                <a href="register.php" class="btn-primary" style="margin-left: 15px;">Register</a>
             <?php endif; ?>
             <button id="theme-toggle" style="margin-left: 15px; padding: 5px 10px; cursor: pointer;">Dark Mode</button>
         </nav>
